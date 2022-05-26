@@ -1,4 +1,4 @@
-# PryanikyTest
+# PryanikyTest 🍪
 
 ## Задание
 
