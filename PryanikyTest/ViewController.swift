@@ -8,10 +8,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        NetworkEngine.request(endpoint: PryanikyEndpoint.getSearchResults) { (result: Result<PryanikyResponse, Error>) in
+            switch result {
+                
+            case .success(let pryanikObject):
+                print(type(of: pryanikObject))
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
 
 
