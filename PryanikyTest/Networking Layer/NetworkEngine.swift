@@ -5,10 +5,9 @@
 //  Created by mac on 29.05.2022.
 //
 
-import Foundation
 import Alamofire
 
-class NetworkEngine {
+final class NetworkEngine {
     //1
     class func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> ()) {
         

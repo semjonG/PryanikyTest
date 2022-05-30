@@ -5,7 +5,6 @@
 //  Created by mac on 29.05.2022.
 //
 
-import Foundation
 import Alamofire
 
 // https://pryaniky.com/static/json/sample.json
