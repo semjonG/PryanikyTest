@@ -9,7 +9,7 @@ import Alamofire
 
 enum PryanikyEndpoint: Endpoint {
     
-    case getSearchResults
+    case getResults
     
     var scheme: String {
         switch self {
@@ -27,7 +27,7 @@ enum PryanikyEndpoint: Endpoint {
     
     var path: String {
         switch self {
-        case .getSearchResults:
+        case .getResults:
             return "/static/json/sample.json"
         }
     }
@@ -43,7 +43,7 @@ enum PryanikyEndpoint: Endpoint {
     
     var method: HTTPMethod {
         switch self {
-        case .getSearchResults:
+        case .getResults:
             return HTTPMethod.get
         }
     }
