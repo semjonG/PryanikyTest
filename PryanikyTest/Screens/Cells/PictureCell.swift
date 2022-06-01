@@ -7,16 +7,16 @@
 
 import UIKit
 
-class PictureCell: UITableViewCell {
+final class PictureCell: UITableViewCell {
     
     static let identifier = String(describing: PictureCell.self)
     
     lazy var pictureImageView: UIImageView = {
         let picture = UIImageView()
         picture.translatesAutoresizingMaskIntoConstraints = false
+        picture.contentMode = .scaleAspectFit
         picture.layer.cornerRadius = 20
         picture.clipsToBounds = true
-        picture.image = UIImage(named: "testPic")
         return picture
     }()
     
@@ -25,12 +25,12 @@ class PictureCell: UITableViewCell {
         label.numberOfLines = 0 // убрали ограничение по кол-ву строк для Лейбла (адаптация под экран)
         label.lineBreakMode = .byWordWrapping // перенос по слову
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
         setupConstraints()
     }
@@ -39,17 +39,24 @@ class PictureCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    //MARK: - Public
+    func configure(_ model: DataResult?) {
+        nameLabel.text = model?.data.text ?? ""
+        let url = URL(string: model?.data.url ?? "")
+        pictureImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    private func setupViews() {
         self.contentView.addSubview(pictureImageView)
         self.contentView.addSubview(nameLabel)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
-            pictureImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            pictureImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             pictureImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             pictureImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            pictureImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            pictureImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
             
             nameLabel.topAnchor.constraint(equalTo: pictureImageView.bottomAnchor, constant: 20),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
@@ -58,3 +65,4 @@ class PictureCell: UITableViewCell {
         ])
     }
 }
+

@@ -21,10 +21,10 @@ struct DataResult: Codable {
 
 // MARK: - DataObject
 struct DataObject: Codable {
-    let text: String?  // PictureModel
-    let url: String? //   PictureModel
-    let selectedID: Int?  //     SelectorModel
-    let variants: [Variant]?  // SelectorModel
+    let text: String?
+    let url: String?
+    let selectedID: Int?
+    let variants: [Variant]?
 
     enum CodingKeys: String, CodingKey {
         case text, url
@@ -33,8 +33,9 @@ struct DataObject: Codable {
     }
 }
 
-// MARK: - Variant  // SelectorVariantsModel
+// MARK: - Variant
 struct Variant: Codable {
     let id: Int
     let text: String
 }
+

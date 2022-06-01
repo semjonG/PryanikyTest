@@ -7,17 +7,48 @@
 
 import UIKit
 
-class SelectorCell: UITableViewCell {
+final class SelectorCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static let identifier = String(describing: SelectorCell.self)
+    
+    lazy var segmentedControl: UISegmentedControl = {
+        let segment = UISegmentedControl()
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        return segment
+    }()
+    
+    // MARK: - Init
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupViews()
+        setupConstraints()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Public
+    func configure(_ model: DataResult?) {
 
+        guard let variants = model?.data.variants else { return }
+        for (index, item) in variants.enumerated() {
+            segmentedControl.insertSegment(withTitle: item.text, at: index, animated: true)
+        }
+    }
+    
+    //MARK: - Private
+    private func setupViews() {
+        self.contentView.addSubview(segmentedControl)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            segmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            segmentedControl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+        ])
+    }
 }

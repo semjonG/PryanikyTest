@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HZCell: UITableViewCell {
+final class HZCell: UITableViewCell {
     
     static let identifier = String(describing: HZCell.self)
     
@@ -16,6 +16,7 @@ class HZCell: UITableViewCell {
         label.numberOfLines = 0 // убрали ограничение по кол-ву строк для Лейбла (адаптация под экран)
         label.lineBreakMode = .byWordWrapping // перенос по слову
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         return label
     }()
     
@@ -30,11 +31,17 @@ class HZCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    //MARK: - Public
+    func configure(_ model: DataResult?) {
+        nameLabel.text = model?.data.text ?? ""
+    }
+    
+    //MARK: - Private
+    private func setupViews() {
         self.contentView.addSubview(nameLabel)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),

@@ -48,3 +48,4 @@ enum PryanikyEndpoint: Endpoint {
         }
     }
 }
+

@@ -6,58 +6,75 @@
 //
 
 import UIKit
+import SDWebImage
 
-class MainViewController: UIViewController {
+enum CellType: String {
+    case hz = "hz"
+    case picture = "picture"
+    case selector = "selector"
+}
+
+final class MainViewController: UIViewController {
     
-    var screenElements = ["hz", "selector", "picture", "hz"]
+   var viewModel = MainViewModel()
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds)
         
         tableView.register(HZCell.self, forCellReuseIdentifier: HZCell.identifier)
+        tableView.register(PictureCell.self, forCellReuseIdentifier: PictureCell.identifier)
+        tableView.register(SelectorCell.self, forCellReuseIdentifier: SelectorCell.identifier)
+        
         tableView.dataSource = self
-        tableView.delegate = self
         
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
-        print(HZCell.identifier, type(of: HZCell.identifier))
-        NetworkEngine.request(endpoint: PryanikyEndpoint.getResults) { (result: Result<PryanikyResponse, Error>) in
-            switch result {
-                
-            case .success(let pryanikObject):
-                print(type(of: pryanikObject))
-                
-            case .failure(let error):
-                print(error)
-            }
+        
+        viewModel.fetchData { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
-    func setupViews() {
+    private func setupViews() {
         self.view.addSubview(tableView)
-        
-        
     }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return screenElements.count
+        return viewModel.screenViews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HZCell.identifier, for: indexPath) as! HZCell
-        cell.nameLabel.text = screenElements[indexPath.row]
-        return cell
-    }
-}
+        
+        let cellType = CellType(rawValue: viewModel.screenViews[indexPath.row])
+        
+        switch cellType {
+            
+        case .hz:
+            let cell = tableView.dequeueReusableCell(withIdentifier: HZCell.identifier, for: indexPath) as! HZCell
+            let hzObject = viewModel.screenResults.first(where: { $0.name == "hz" })
+            cell.configure(hzObject)
+            return cell
+            
+        case .picture:
+            let cell = tableView.dequeueReusableCell(withIdentifier: PictureCell.identifier, for: indexPath) as! PictureCell
+            let pictureObject = viewModel.screenResults.first(where: { $0.name == "picture" })
+            cell.configure(pictureObject)
+            return cell
+            
+        case .selector:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectorCell.identifier, for: indexPath) as! SelectorCell
+            let selectorObject = viewModel.screenResults.first(where: { $0.name == "selector" })
+            cell.configure(selectorObject)
+            return cell
 
-extension MainViewController: UITableViewDelegate {
-    
+        case .none:
+            return UITableViewCell()
+        }
+    }
 }

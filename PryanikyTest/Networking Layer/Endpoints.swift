@@ -7,8 +7,6 @@
 
 import Alamofire
 
-// https://pryaniky.com/static/json/sample.json
-
 protocol Endpoint {
     // HTTPS
     var scheme: String { get }
