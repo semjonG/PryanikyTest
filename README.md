@@ -17,4 +17,10 @@
 - Знакомство с RxSwift будет плюсом
 
 ## Выполнено
-в процессе
+- MVVM (простой вариант)
+- расширяемый и тестируемый Networking layer
+- UIKit
+- Alamofire 
+- SDWebImage 
+  
+  <img width="256" alt="example" src="https://raw.githubusercontent.com/semjonG/PryanikyTest/main/scr1.png"><br>
