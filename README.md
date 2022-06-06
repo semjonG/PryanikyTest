@@ -22,5 +22,6 @@
 - UIKit
 - Alamofire 
 - SDWebImage 
+- No storyboard (programmatically)
   
   <img width="256" alt="example" src="https://raw.githubusercontent.com/semjonG/PryanikyTest/main/scr1.png"><br>
