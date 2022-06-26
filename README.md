@@ -24,19 +24,4 @@
 - SDWebImage 
 - No storyboard (programmatically)
   
-    <table>
-  <tr>
-    <td>Main screen</td>
-    <td>Alert information</td>
-    <td>Animated</td>
-  </tr>
-  <tr>
-    <td><img width="256" src="https://github.com/semjonG/PryanikyTest/blob/main/screen1.png?raw=true"></td>
-   
-    <td><img width="256" src="https://github.com/semjonG/PryanikyTest/blob/main/screen2.png?raw=true"></td>
-    
-    <td><img width="256" src="https://github.com/semjonG/PryanikyTest/blob/main/animated.gif?raw=true"></td>
-  </tr>
-  <tr>
-  
   <img width="256" alt="example" src="https://github.com/semjonG/PryanikyTest/blob/main/animated.gif?raw=true"><br>
