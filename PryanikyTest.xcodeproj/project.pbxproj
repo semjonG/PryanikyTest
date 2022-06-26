@@ -20,6 +20,7 @@
 		0494C11E28469209006E0AEB /* SelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C11D28469209006E0AEB /* SelectorCell.swift */; };
 		0494C1202846A52A006E0AEB /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C11F2846A52A006E0AEB /* PictureCell.swift */; };
 		0494C1232847EE53006E0AEB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C1222847EE53006E0AEB /* MainViewModel.swift */; };
+		04FD643B2868AC0500F28759 /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD643A2868AC0500F28759 /* UIView+PinEdges.swift */; };
 		A9C6B9CA17AFC8F67C78018D /* Pods_PryanikyTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020E67FA5F92E2B9EE744D4F /* Pods_PryanikyTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		0494C11D28469209006E0AEB /* SelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorCell.swift; sourceTree = "<group>"; };
 		0494C11F2846A52A006E0AEB /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		0494C1222847EE53006E0AEB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		04FD643A2868AC0500F28759 /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
 		596BE7BB13FF8718EBCD70C2 /* Pods-PryanikyTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PryanikyTest.debug.xcconfig"; path = "Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest.debug.xcconfig"; sourceTree = "<group>"; };
 		B432ADAF7BD65B1A4DBF1FAD /* Pods-PryanikyTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PryanikyTest.release.xcconfig"; path = "Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 				0494C11528450EE2006E0AEB /* App */,
 				0494C1172846494D006E0AEB /* Screens */,
 				0494C10E2843DB28006E0AEB /* Networking Layer */,
+				04FD64392868ABE400F28759 /* Extensions */,
 				0494C116284551A3006E0AEB /* Resources */,
 			);
 			path = PryanikyTest;
@@ -88,9 +91,9 @@
 		0494C10E2843DB28006E0AEB /* Networking Layer */ = {
 			isa = PBXGroup;
 			children = (
+				04FD6438286870FC00F28759 /* Models */,
 				0494C10C2843CD26006E0AEB /* Endpoints.swift */,
 				0494C10F2843DB64006E0AEB /* PryanikyEndpoint.swift */,
-				0494C1112843DEC6006E0AEB /* PryanikyResponse.swift */,
 				0494C1132843E37E006E0AEB /* NetworkEngine.swift */,
 			);
 			path = "Networking Layer";
@@ -141,6 +144,22 @@
 				0494C1222847EE53006E0AEB /* MainViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04FD6438286870FC00F28759 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0494C1112843DEC6006E0AEB /* PryanikyResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04FD64392868ABE400F28759 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04FD643A2868AC0500F28759 /* UIView+PinEdges.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		112A92D0BC5CB837A16D247C /* Frameworks */ = {
@@ -277,6 +296,7 @@
 				0494C0FD28401774006E0AEB /* MainViewController.swift in Sources */,
 				0494C11A284691CF006E0AEB /* HZCell.swift in Sources */,
 				0494C1202846A52A006E0AEB /* PictureCell.swift in Sources */,
+				04FD643B2868AC0500F28759 /* UIView+PinEdges.swift in Sources */,
 				0494C1122843DEC6006E0AEB /* PryanikyResponse.swift in Sources */,
 				0494C1142843E37E006E0AEB /* NetworkEngine.swift in Sources */,
 				0494C0F928401774006E0AEB /* AppDelegate.swift in Sources */,

@@ -8,17 +8,20 @@
 import UIKit
 
 final class SelectorCell: UITableViewCell {
+    
+    //Кложурная переменная, открытая
+    var onSegmentSelectTitle: ((String)->())?
 
     static let identifier = String(describing: SelectorCell.self)
     
     lazy var segmentedControl: UISegmentedControl = {
         let segment = UISegmentedControl()
         segment.translatesAutoresizingMaskIntoConstraints = false
+        segment.addTarget(self, action: #selector(segmentControlAction(_:)), for: .valueChanged)
         return segment
     }()
     
     // MARK: - Init
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -39,6 +42,15 @@ final class SelectorCell: UITableViewCell {
         }
     }
     
+    //MARK: - Actions
+    @objc
+    private func segmentControlAction(_ sender: UISegmentedControl) {
+        
+        let segmentIndex = sender.selectedSegmentIndex
+        let title = sender.titleForSegment(at: segmentIndex) ?? ""
+        onSegmentSelectTitle?(title)
+    }
+    
     //MARK: - Private
     private func setupViews() {
         self.contentView.addSubview(segmentedControl)
@@ -47,6 +59,8 @@ final class SelectorCell: UITableViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             segmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+            segmentedControl.widthAnchor.constraint(equalToConstant: 352),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 48),
             segmentedControl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             segmentedControl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])

@@ -16,8 +16,8 @@ enum CellType: String {
 
 final class MainViewController: UIViewController {
     
-   var viewModel = MainViewModel()
-
+    var viewModel = MainViewModel()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds)
         
@@ -26,6 +26,8 @@ final class MainViewController: UIViewController {
         tableView.register(SelectorCell.self, forCellReuseIdentifier: SelectorCell.identifier)
         
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorColor = UIColor.clear
         
         return tableView
     }()
@@ -45,6 +47,7 @@ final class MainViewController: UIViewController {
 }
 
 extension MainViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.screenViews.count
     }
@@ -71,6 +74,11 @@ extension MainViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: SelectorCell.identifier, for: indexPath) as! SelectorCell
             let selectorObject = viewModel.screenResults.first(where: { $0.name == "selector" })
             cell.configure(selectorObject)
+            
+            cell.onSegmentSelectTitle = { title in
+                self.showAlert(with: title)
+            }
+            
             return cell
 
         case .none:
@@ -78,3 +86,34 @@ extension MainViewController: UITableViewDataSource {
         }
     }
 }
+
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let selectedCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.isSelected = false
+        
+        guard let index = tableView.indexPathForSelectedRow?.row else { return }
+        
+        let viewKey = viewModel.screenViews[index] //hz, selector, picture, hz
+        
+        guard let viewData = viewModel.screenResults.first(where: { $0.name == "\(viewKey)" }) else { return }
+        
+        if viewData.name == "selector" {
+            tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
+        showAlert(with: viewData.data.text)
+    }
+    
+    func showAlert(with message: String?) {
+        let alertController = UIAlertController(title: "Объект",
+                                                message: message,
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
+    }
+}
+
