@@ -24,4 +24,4 @@
 - SDWebImage 
 - No storyboard (programmatically)
   
-  <img width="256" alt="example" src="https://raw.githubusercontent.com/semjonG/PryanikyTest/main/scr1.png"><br>
+  <img width="256" alt="example" src="https://github.com/semjonG/PryanikyTest/blob/main/screen1.png?raw=true"><br>
