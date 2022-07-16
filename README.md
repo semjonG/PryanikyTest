@@ -23,5 +23,6 @@
 - Alamofire 
 - SDWebImage 
 - No storyboard (programmatically)
+- SPM (no Cocoapods installation)
   
   <img width="256" alt="example" src="https://github.com/semjonG/PryanikyTest/blob/main/animated.gif?raw=true"><br>
