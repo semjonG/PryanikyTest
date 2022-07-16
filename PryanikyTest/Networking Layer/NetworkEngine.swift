@@ -4,7 +4,7 @@
 //
 //  Created by mac on 29.05.2022.
 //
-
+import Foundation
 import Alamofire
 
 final class NetworkEngine {

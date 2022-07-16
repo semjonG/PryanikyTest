@@ -62,12 +62,14 @@ extension MainViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: HZCell.identifier, for: indexPath) as! HZCell
             let hzObject = viewModel.screenResults.first(where: { $0.name == "hz" })
             cell.configure(hzObject)
+            cell.selectionStyle = .none
             return cell
             
         case .picture:
             let cell = tableView.dequeueReusableCell(withIdentifier: PictureCell.identifier, for: indexPath) as! PictureCell
             let pictureObject = viewModel.screenResults.first(where: { $0.name == "picture" })
             cell.configure(pictureObject)
+            cell.selectionStyle = .none
             return cell
             
         case .selector:
@@ -76,9 +78,10 @@ extension MainViewController: UITableViewDataSource {
             cell.configure(selectorObject)
             
             cell.onSegmentSelectTitle = { title in
+//                self.showAlert(with: title, variantID: variantID)
                 self.showAlert(with: title)
             }
-            
+            cell.selectionStyle = .none
             return cell
 
         case .none:
@@ -90,15 +93,30 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.frame = CGRect(x: (cell?.frame.origin.x)!-15,
+                                 y: (cell?.frame.origin.y)!,
+                                 width: cell!.bounds.size.width,
+                                 height: cell!.bounds.size.height)
 
-        let selectedCell = tableView.cellForRow(at: indexPath)!
-        selectedCell.isSelected = false
+        }) { (finished) in
+            UIView.animate(withDuration: 0.3, animations: {
+                let cell = tableView.cellForRow(at: indexPath)
+                cell?.frame = CGRect(x: (cell?.frame.origin.x)!+15,
+                                     y: (cell?.frame.origin.y)!,
+                                     width: cell!.bounds.size.width,
+                                     height: cell!.bounds.size.height)
+            })
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
         
         guard let index = tableView.indexPathForSelectedRow?.row else { return }
-        
+
         let viewKey = viewModel.screenViews[index] //hz, selector, picture, hz
         
-        guard let viewData = viewModel.screenResults.first(where: { $0.name == "\(viewKey)" }) else { return }
+        guard let viewData: DataResult = viewModel.screenResults.first(where: { $0.name == "\(viewKey)" }) else { return }
         
         if viewData.name == "selector" {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -107,9 +125,10 @@ extension MainViewController: UITableViewDelegate {
         showAlert(with: viewData.data.text)
     }
     
-    func showAlert(with message: String?) {
+    func showAlert(with message: String?) { // nil для 2х параметров
+        
         let alertController = UIAlertController(title: "Объект",
-                                                message: message,
+                                                message: "\(message ?? "")",
                                                 preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)

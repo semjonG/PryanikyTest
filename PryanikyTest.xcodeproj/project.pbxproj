@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04176F7A28816F0E00A8FFBF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04176F7928816F0E00A8FFBF /* Alamofire */; };
+		04176F7D28816F9A00A8FFBF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04176F7C28816F9A00A8FFBF /* SDWebImage */; };
 		0494C0F928401774006E0AEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C0F828401774006E0AEB /* AppDelegate.swift */; };
 		0494C0FB28401774006E0AEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C0FA28401774006E0AEB /* SceneDelegate.swift */; };
 		0494C0FD28401774006E0AEB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C0FC28401774006E0AEB /* MainViewController.swift */; };
@@ -21,11 +23,9 @@
 		0494C1202846A52A006E0AEB /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C11F2846A52A006E0AEB /* PictureCell.swift */; };
 		0494C1232847EE53006E0AEB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C1222847EE53006E0AEB /* MainViewModel.swift */; };
 		04FD643B2868AC0500F28759 /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD643A2868AC0500F28759 /* UIView+PinEdges.swift */; };
-		A9C6B9CA17AFC8F67C78018D /* Pods_PryanikyTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020E67FA5F92E2B9EE744D4F /* Pods_PryanikyTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		020E67FA5F92E2B9EE744D4F /* Pods_PryanikyTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PryanikyTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0494C0F528401774006E0AEB /* PryanikyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PryanikyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0494C0F828401774006E0AEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0494C0FA28401774006E0AEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +42,6 @@
 		0494C11F2846A52A006E0AEB /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		0494C1222847EE53006E0AEB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		04FD643A2868AC0500F28759 /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
-		596BE7BB13FF8718EBCD70C2 /* Pods-PryanikyTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PryanikyTest.debug.xcconfig"; path = "Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest.debug.xcconfig"; sourceTree = "<group>"; };
-		B432ADAF7BD65B1A4DBF1FAD /* Pods-PryanikyTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PryanikyTest.release.xcconfig"; path = "Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9C6B9CA17AFC8F67C78018D /* Pods_PryanikyTest.framework in Frameworks */,
+				04176F7D28816F9A00A8FFBF /* SDWebImage in Frameworks */,
+				04176F7A28816F0E00A8FFBF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +62,6 @@
 			children = (
 				0494C0F728401774006E0AEB /* PryanikyTest */,
 				0494C0F628401774006E0AEB /* Products */,
-				129E1758B23AACD7AE248139 /* Pods */,
-				112A92D0BC5CB837A16D247C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,7 +79,7 @@
 				0494C11528450EE2006E0AEB /* App */,
 				0494C1172846494D006E0AEB /* Screens */,
 				0494C10E2843DB28006E0AEB /* Networking Layer */,
-				04FD64392868ABE400F28759 /* Extensions */,
+				04FD64392868ABE400F28759 /* Helpers */,
 				0494C116284551A3006E0AEB /* Resources */,
 			);
 			path = PryanikyTest;
@@ -154,29 +151,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		04FD64392868ABE400F28759 /* Extensions */ = {
+		04FD64392868ABE400F28759 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				04FD643A2868AC0500F28759 /* UIView+PinEdges.swift */,
 			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		112A92D0BC5CB837A16D247C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				020E67FA5F92E2B9EE744D4F /* Pods_PryanikyTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		129E1758B23AACD7AE248139 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				596BE7BB13FF8718EBCD70C2 /* Pods-PryanikyTest.debug.xcconfig */,
-				B432ADAF7BD65B1A4DBF1FAD /* Pods-PryanikyTest.release.xcconfig */,
-			);
-			path = Pods;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,17 +166,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0494C10928401778006E0AEB /* Build configuration list for PBXNativeTarget "PryanikyTest" */;
 			buildPhases = (
-				B550A66B91A86DA81E208E12 /* [CP] Check Pods Manifest.lock */,
 				0494C0F128401774006E0AEB /* Sources */,
 				0494C0F228401774006E0AEB /* Frameworks */,
 				0494C0F328401774006E0AEB /* Resources */,
-				DC328C1349E063083E92DD09 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PryanikyTest;
+			packageProductDependencies = (
+				04176F7928816F0E00A8FFBF /* Alamofire */,
+				04176F7C28816F9A00A8FFBF /* SDWebImage */,
+			);
 			productName = PryanikyTest;
 			productReference = 0494C0F528401774006E0AEB /* PryanikyTest.app */;
 			productType = "com.apple.product-type.application";
@@ -225,6 +207,10 @@
 				Base,
 			);
 			mainGroup = 0494C0EC28401774006E0AEB;
+			packageReferences = (
+				04176F7828816F0E00A8FFBF /* XCRemoteSwiftPackageReference "Alamofire" */,
+				04176F7B28816F9A00A8FFBF /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 0494C0F628401774006E0AEB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -245,48 +231,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B550A66B91A86DA81E208E12 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PryanikyTest-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC328C1349E063083E92DD09 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PryanikyTest/Pods-PryanikyTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0494C0F128401774006E0AEB /* Sources */ = {
@@ -440,7 +384,6 @@
 		};
 		0494C10A28401778006E0AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 596BE7BB13FF8718EBCD70C2 /* Pods-PryanikyTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -468,7 +411,6 @@
 		};
 		0494C10B28401778006E0AEB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B432ADAF7BD65B1A4DBF1FAD /* Pods-PryanikyTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -516,6 +458,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04176F7828816F0E00A8FFBF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		04176F7B28816F9A00A8FFBF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04176F7928816F0E00A8FFBF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04176F7828816F0E00A8FFBF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		04176F7C28816F9A00A8FFBF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04176F7B28816F9A00A8FFBF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0494C0ED28401774006E0AEB /* Project object */;
 }

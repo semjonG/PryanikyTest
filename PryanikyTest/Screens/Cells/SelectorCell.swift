@@ -9,6 +9,8 @@ import UIKit
 
 final class SelectorCell: UITableViewCell {
     
+    let dataResult: DataResult? = nil
+    
     //Кложурная переменная, открытая
     var onSegmentSelectTitle: ((String)->())?
 
@@ -18,6 +20,10 @@ final class SelectorCell: UITableViewCell {
         let segment = UISegmentedControl()
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.addTarget(self, action: #selector(segmentControlAction(_:)), for: .valueChanged)
+        
+        let font = UIFont.systemFont(ofSize: 12)
+        segment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
         return segment
     }()
     
@@ -38,7 +44,7 @@ final class SelectorCell: UITableViewCell {
 
         guard let variants = model?.data.variants else { return }
         for (index, item) in variants.enumerated() {
-            segmentedControl.insertSegment(withTitle: item.text, at: index, animated: true)
+            segmentedControl.insertSegment(withTitle: "ID-\(item.id) \(item.text)", at: index, animated: true)
         }
     }
     
@@ -50,6 +56,17 @@ final class SelectorCell: UITableViewCell {
         let title = sender.titleForSegment(at: segmentIndex) ?? ""
         onSegmentSelectTitle?(title)
     }
+//    private func segmentControlAction(_ sender: UISegmentedControl) {
+//
+//        let segmentIndex = sender.selectedSegmentIndex
+//        let title = sender.titleForSegment(at: segmentIndex) ?? ""
+//
+//        if let variants = dataResult?.data.variants {
+//            let variant = variants[segmentIndex]
+//
+//            onSegmentSelectTitle?(title, variant.id)
+//        }
+//    }
     
     //MARK: - Private
     private func setupViews() {
