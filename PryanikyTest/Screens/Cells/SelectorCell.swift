@@ -11,7 +11,6 @@ final class SelectorCell: UITableViewCell {
     
     let dataResult: DataResult? = nil
     
-    //Кложурная переменная, открытая
     var onSegmentSelectTitle: ((String)->())?
 
     static let identifier = String(describing: SelectorCell.self)
@@ -56,17 +55,6 @@ final class SelectorCell: UITableViewCell {
         let title = sender.titleForSegment(at: segmentIndex) ?? ""
         onSegmentSelectTitle?(title)
     }
-//    private func segmentControlAction(_ sender: UISegmentedControl) {
-//
-//        let segmentIndex = sender.selectedSegmentIndex
-//        let title = sender.titleForSegment(at: segmentIndex) ?? ""
-//
-//        if let variants = dataResult?.data.variants {
-//            let variant = variants[segmentIndex]
-//
-//            onSegmentSelectTitle?(title, variant.id)
-//        }
-//    }
     
     //MARK: - Private
     private func setupViews() {

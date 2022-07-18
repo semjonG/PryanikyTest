@@ -78,7 +78,6 @@ extension MainViewController: UITableViewDataSource {
             cell.configure(selectorObject)
             
             cell.onSegmentSelectTitle = { title in
-//                self.showAlert(with: title, variantID: variantID)
                 self.showAlert(with: title)
             }
             cell.selectionStyle = .none
@@ -125,7 +124,7 @@ extension MainViewController: UITableViewDelegate {
         showAlert(with: viewData.data.text)
     }
     
-    func showAlert(with message: String?) { // nil для 2х параметров
+    func showAlert(with message: String?) { 
         
         let alertController = UIAlertController(title: "Объект",
                                                 message: "\(message ?? "")",
