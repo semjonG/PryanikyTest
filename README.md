@@ -25,4 +25,4 @@
 - No storyboard (programmatically)
 - SPM (no Cocoapods installation)
   
-  <img width="256" alt="example" src="https://github.com/semjonG/PryanikyTest/blob/main/animated.gif?raw=true"><br>
+  <img width="256" alt="example" src="https://github.com/semjonG/PryanikyTest/blob/main/running.gif?raw=true"><br>
